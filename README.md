@@ -54,6 +54,8 @@ Read more about the traits in the trait section, but it's essential for Guardian
 
 ## Usage
 
+See [http://emilmoe.com/guardian/](http://emilmoe.com/guardian/)
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
