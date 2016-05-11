@@ -7,23 +7,52 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+Guardian is a framework for handling roles and permissions in Laravel. As SaaS and management web application are being more and more popular, it's essential to make the flow of the permissions as simple as possible, so you can focus on making the product.
 
-## Install
+Therefor I made this package which will enable you to define permissions in middleware. Not only does this allow you to separate the logic from your application it also allows you to perform ``php artisan route:list`` to see which part of your application is restricted by which permission.
 
-Via Composer
+## Requirements
 
-``` bash
-$ composer require EmilMoe/Guardian
-```
+Guardian requires **Laravel 5.1** in order to work due to it's use of middleware parameters. Other requirements are defined by [Laravel 5.1](https://laravel.com/docs/5.1).
+
+## Installation
+
+The easiest way to install Guardian is to use composer. Run this composer in your shell to begin installation
+
+~~~~shell
+composer require emilmoe/guardian
+~~~~
+
+After the package has successfully been installed to your application, you must set up a service provider in ``config\app.php``:
+
+~~~~php
+EmilMoe\Guardian\GuardianServiceProvider::class,
+~~~~
+
+Publish the migrations and configuration files to your application by executing this command in your shell:
+
+~~~~shell
+php artisan vendor:publish --provider="EmilMoe\GuardianServiceProvider"
+~~~~
+
+Please take a look through the config fil in ``config\guardian.php`` as some configurations must be set before you migrate the package. The configurations is sefl explainable.
+
+Last step is to migrate 4 tables to your database. Guardian currently only supports application with an database, the tables are used to keep track of roles, permissions and how they are related between and with your application.
+
+Run the migration by executing this in your shell:
+
+~~~~shell
+php artisan migrate
+~~~~
+In your user model, which by default is ``App\User.php`` you must add this trait:
+
+~~~~php
+use WithPermission;
+~~~~
+
+Read more about the traits in the trait section, but it's essential for Guardian to work.
 
 ## Usage
-
-``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
-```
 
 ## Change log
 
@@ -31,9 +60,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ## Testing
 
-``` bash
-$ composer test
-```
+Coming
 
 ## Contributing
 
