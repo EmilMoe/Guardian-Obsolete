@@ -1,0 +1,46 @@
+{
+    "name": "emilmoe/guardian",
+    "type": "library",
+    "description": "Middleware based permission control",
+    "keywords": [
+        "EmilMoe",
+        "Guardian",
+        "Permission",
+        "SaaS"
+    ],
+    "homepage": "https://emilmoe.com/guardian",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Emil Moe",
+            "email": "emil@moegroup.dk",
+            "homepage": "https://emilmoe.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : "~5.5|~7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "EmilMoe\\Guardian\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EmilMoe\\Guardian\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
